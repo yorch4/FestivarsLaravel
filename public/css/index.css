@@ -1,0 +1,59 @@
+body {
+    font-family: 'Europa';
+    color: gainsboro;
+    background-color: rgb(39, 39, 39);
+}
+.bg-dark {
+    background-color: rgb(26, 26, 26) !important;
+}
+.card {
+    width: 45rem;
+    border-top: #e18508 3px solid;
+}
+.card-header {
+    color: black !important;
+}
+.form-control:focus {
+    border-bottom: #e18508 solid 1px !important;
+}
+.btn-primary {
+    background-color: #e18508 !important;
+}
+a {
+    text-decoration: none;
+    color: #e18508;
+}
+a:hover {
+    color: black;
+}
+.small {
+    color: darkgray !important;
+}
+
+nav a {
+    color: gainsboro !important;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #e18508 !important;
+    text-decoration: none;
+}
+
+.btnLink {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font-family: Europe;
+    color: gainsboro;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnLink:hover {
+    color: #e18508 !important;
+}
+.text-title {
+    color: #e18508;
+}

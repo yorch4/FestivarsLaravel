@@ -22,7 +22,7 @@ class CreateYourFestivalsTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('restrict');
             $table->foreign('idFestival')
-                ->references('id')->on('festival')
+                ->references('id')->on('festivals')
                 ->onDelete('restrict');
         });
     }
