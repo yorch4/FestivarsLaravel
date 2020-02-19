@@ -16,7 +16,7 @@ class CreateFestivalTable extends Migration
         Schema::create('festivals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->string('description');
+            $table->longText('description');
             $table->integer('capacity');
             $table->integer('allowedAge');
             $table->date('date');
