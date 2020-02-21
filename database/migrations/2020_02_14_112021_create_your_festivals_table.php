@@ -14,6 +14,7 @@ class CreateYourFestivalsTable extends Migration
     public function up()
     {
         Schema::create('your_festivals', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('idUser');
             $table->unsignedBigInteger('idFestival');

@@ -17,20 +17,9 @@
                         </p>
                         <div class="text-center">
                             <form action="" method="post">
-                                {{ csrf_field() }}
-                                @if(
-                                $query = DB::table('your_festivals')->where([
-                                ['idUser', '=', \Illuminate\Support\Facades\Auth::user()->id],
-                                ['idFestival', '=', $festival->id],
-                                ])->get()
-                                )
-                                @if($query->count() > 0)
-                                    <input type="submit" name="seguir" value="Seguir Festival" class="btn btn-primary" disabled>
-                                @else
-                                    <input type="hidden" name="festivalOculto" value="{{$festival->id}}">
-                                    <input type="submit" name="seguir" value="Seguir Festival" class="btn btn-primary">
-                                    @endif
-                                @endif
+                            {{ csrf_field() }}
+                                <input type="hidden" name="festivalOculto" value="{{$festival->id}}">
+                                <input type="submit" name="dejarDeSeguir" value="Dejar de Seguir" class="btn btn-danger">
                             </form>
                         </div>
                     </div>
@@ -39,4 +28,3 @@
         @endforeach
     </div>
 @endsection
-

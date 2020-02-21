@@ -8,7 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a href="#">FESTIVARS</a>
+                <a class="ml-3" href="{{url('/')}}">FESTIVARS</a>
+                @if(Auth::user())
+                    <a class="ml-3" href="{{url('/your_festivals')}}">TUS FESTIVALES</a>
+                    @if(Auth::user()->rol == 'admin')
+                        <a class="ml-3" href="{{url('/control')}}">CONTROL</a>
+                        @endif
+                    @endif
             </li>
         </ul>
         <span class="navbar-text">
