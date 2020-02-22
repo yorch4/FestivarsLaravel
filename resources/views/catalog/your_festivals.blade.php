@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('content')
+    @if(count($arrayFestivals) == 0)
+        <p class="text-center mt-3">
+            Aún no sigues festivales
+        </p>
+    @endif
     <div class="row mb-3">
         @foreach($arrayFestivals as	$key =>	$festival)
             <div class="col-sm-4 mt-3">

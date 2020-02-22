@@ -17,15 +17,15 @@ class CatalogController extends Controller {
     }
     public function control()
     {
+        $festivals = Festival::all();
         if(Auth::user()->rol == 'admin') {
-            return view('catalog.control');
+            return view('catalog.control', array('arrayFestivals' => $festivals));
         } else {
-            $festivals = Festival::all();
             return view('catalog.index', array('arrayFestivals' => $festivals));
         }
     }
     public function your_festivals() {
-        $your_festivals = Your_festival::join('Festivals','idFestival', '=', 'Festivals.id')->select('Festivals.name','Festivals.description','Festivals.capacity','Festivals.allowedAge','Festivals.date','Festivals.photo','Your_festivals.id')->get();
+        $your_festivals = Your_festival::join('Festivals','idFestival', '=', 'Festivals.id')->select('Festivals.name','Festivals.description','Festivals.capacity','Festivals.allowedAge','Festivals.date','Festivals.photo','Your_festivals.id')->where('Your_festivals.idUser', '=', Auth::user()->id)->get();
         return view('catalog.your_festivals', array('arrayFestivals' => $your_festivals));
     }
     public function postCatalog(Request $request) {
