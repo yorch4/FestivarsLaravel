@@ -42,5 +42,15 @@ class CatalogController extends Controller {
 
         return redirect('/your_festivals');
     }
+    public function delete($id) {
+        $arrayYour_festival = DB::table('your_festivals')->where("idFestival", '=', $id);
+        foreach ($arrayYour_festival as $your_festival) {
+            $your_festival->delete();
+        }
+        $festival = Festival::find($id);
+        $festival->delete();
+
+        return redirect('/control');
+    }
 
 }

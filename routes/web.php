@@ -15,6 +15,7 @@
 Route::group(['middleware' => 'auth'], function() {
     Route::get('catalog','CatalogController@getIndex');
     Route::get('control', 'CatalogController@control');
+    Route::delete('control/{id}', 'CatalogController@delete');
     Route::get('your_festivals', 'CatalogController@your_festivals');
     Route::post('catalog', 'CatalogController@postCatalog');
     Route::post('your_festivals', 'CatalogController@postYour_festivals');

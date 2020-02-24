@@ -19,17 +19,21 @@
                             <li><i class="fa fa-ban"></i>{{$festival->allowedAge}}</li>
                         </ul>
                         </p>
-                        <form action="" method="post">
-                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="submit" value="Modificar" class="btn btn-primary">
+                                    <form>
+                                        {{ csrf_field() }}
+                                        <input type="submit" value="Modificar" class="btn btn-primary">
+                                    </form>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="submit" value="Eliminar" class="btn btn-danger">
+                                    <form action="{{action('catalogController@delete', $festival->id)}}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                                    </form>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
