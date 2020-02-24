@@ -43,13 +43,48 @@ class CatalogController extends Controller {
         return redirect('/your_festivals');
     }
     public function delete($id) {
-        $arrayYour_festival = DB::table('your_festivals')->where("idFestival", '=', $id);
-        foreach ($arrayYour_festival as $your_festival) {
-            $your_festival->delete();
-        }
+        DB::table('your_festivals')->where("idFestival", '=', $id)->delete();
+
         $festival = Festival::find($id);
         $festival->delete();
 
+        return redirect('/control');
+    }
+    public function add() {
+        return view('catalog.add');
+    }
+    public function postAdd(Request $request) {
+        $fich_unic = time() . "-" . $request->file('photo')->getClientOriginalName();
+        //para que no se repita el nombre del fichero se concatena el tiempo unix
+        $imgFestival = "img/" . $fich_unic;
+        move_uploaded_file($request->file('photo'), $imgFestival);
+        $festival = new Festival();
+        $festival->name = $request->input('name');
+        $festival->description = $request->input('description');
+        $festival->capacity = $request->input('capacity');
+        $festival->allowedAge = $request->input('allowedAge');
+        $festival->date = $request->input('date');
+        $festival->photo = $imgFestival;
+        $festival->save();
+        return redirect('/control');
+    }
+    public function update($id) {
+        $festival = Festival::find($id);
+        return view('catalog.update', array('festival' => $festival));
+    }
+    public function postUpdate(Request $request) {
+        $fich_unic = time() . "-" . $request->file('photo')->getClientOriginalName();
+        //para que no se repita el nombre del fichero se concatena el tiempo unix
+        $imgFestival = "img/" . $fich_unic;
+        move_uploaded_file($request->file('photo'), $imgFestival);
+        $festival = Festival::find($request->input('idOculto'));
+        $festival->name = $request->input('name');
+        $festival->description = $request->input('description');
+        $festival->capacity = $request->input('capacity');
+        $festival->allowedAge = $request->input('allowedAge');
+        $festival->date = $request->input('date');
+        $festival->photo = $imgFestival;
+        $festival->save();
         return redirect('/control');
     }
 

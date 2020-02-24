@@ -3,7 +3,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="{{url('/')}}">
-        <img src="img/Logo.PNG" alt="Logo" style="width:40px;">
+        <img src="{{url('img/Logo.PNG')}}" alt="Logo" style="width:40px;">
     </a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

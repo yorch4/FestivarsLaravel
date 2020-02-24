@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <form action="" method="post">
+    <form action="{{url('control/add')}}" method="get">
         {{ csrf_field() }}
         <input type="submit" value="Añadir Festival" class="btn btn-primary mt-3">
     </form>
@@ -21,16 +21,15 @@
                         </p>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <form>
+                                    <form action="{{url('control/update', ['id' => $festival->id])}}" method="get">
                                         {{ csrf_field() }}
                                         <input type="submit" value="Modificar" class="btn btn-primary">
                                     </form>
                                 </div>
                                 <div class="col-sm-6">
-                                    <form action="{{action('catalogController@delete', $festival->id)}}" method="post">
+                                    <form action="{{url('control/delete', ['id' => $festival->id])}}" method="get">
                                         {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <input type="submit" value="Eliminar" class="btn btn-danger">
+                                        <input type="submit" value="Eliminar" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminarlo?')">
                                     </form>
                                 </div>
                             </div>
