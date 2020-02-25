@@ -8,12 +8,12 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">{{ __('Name') }}</label>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus>
-                    @error('name')
+                    <input id="name" type="text" class="form-control @if(isset($error)) is-invalid @endif" name="name" value="{{ old('name') }}" required autofocus>
+                    @if(isset($error))
                     <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>{{ $error }}</strong>
                         </span>
-                    @enderror
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="description">{{ __('Description') }}</label>

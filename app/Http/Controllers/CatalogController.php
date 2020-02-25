@@ -18,11 +18,7 @@ class CatalogController extends Controller {
     public function control()
     {
         $festivals = Festival::all();
-        if(Auth::user()->rol == 'admin') {
-            return view('catalog.control', array('arrayFestivals' => $festivals));
-        } else {
-            return view('catalog.index', array('arrayFestivals' => $festivals));
-        }
+        return view('catalog.control', array('arrayFestivals' => $festivals));
     }
     public function your_festivals() {
         $your_festivals = Your_festival::join('Festivals','idFestival', '=', 'Festivals.id')->select('Festivals.name','Festivals.description','Festivals.capacity','Festivals.allowedAge','Festivals.date','Festivals.photo','Your_festivals.id')->where('Your_festivals.idUser', '=', Auth::user()->id)->get();
@@ -54,6 +50,10 @@ class CatalogController extends Controller {
         return view('catalog.add');
     }
     public function postAdd(Request $request) {
+        $error = DB::table('festivals')->where('name', '=', $request->input('name'))->get();
+        if(count($error) > 0) {
+            return view('catalog.add', array('error' => "El festival ya existe"));
+        }
         $fich_unic = time() . "-" . $request->file('photo')->getClientOriginalName();
         //para que no se repita el nombre del fichero se concatena el tiempo unix
         $imgFestival = "img/" . $fich_unic;
