@@ -51,7 +51,19 @@ nav a:hover {
     text-decoration: none;
     cursor: pointer;
 }
-
+.btnLink2 {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font-family: 'Europa' !important;
+    font-size: 1.2rem !important;
+    color: #e18508;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btnLink2:hover {
+    color: black !important;
+}
 .btnLink:hover {
     color: #e18508 !important;
 }

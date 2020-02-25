@@ -21,7 +21,7 @@ class CatalogController extends Controller {
         return view('catalog.control', array('arrayFestivals' => $festivals));
     }
     public function your_festivals() {
-        $your_festivals = Your_festival::join('Festivals','idFestival', '=', 'Festivals.id')->select('Festivals.name','Festivals.description','Festivals.capacity','Festivals.allowedAge','Festivals.date','Festivals.photo','Your_festivals.id')->where('Your_festivals.idUser', '=', Auth::user()->id)->get();
+        $your_festivals = Your_festival::join('Festivals','idFestival', '=', 'Festivals.id')->select('Festivals.name','Festivals.description','Festivals.capacity','Festivals.allowedAge','Festivals.date','Festivals.photo','Your_festivals.id', 'Festivals.id as idFestival')->where('Your_festivals.idUser', '=', Auth::user()->id)->get();
         return view('catalog.your_festivals', array('arrayFestivals' => $your_festivals));
     }
     public function postCatalog(Request $request) {
@@ -86,6 +86,10 @@ class CatalogController extends Controller {
         $festival->photo = $imgFestival;
         $festival->save();
         return redirect('/control');
+    }
+    public function details($id) {
+        $festival = Festival::find($id);
+        return view('catalog.details', array('festival' => $festival));
     }
 
 }

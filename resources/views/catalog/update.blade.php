@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="card mx-auto my-5">
-        <div class="card-header"><h5>{{ __('Login') }}</h5></div>
+        <div class="card-header"><h5>Modificar Festival</h5></div>
         <div class="card-body mt-3">
             <form method="POST" action="{{ url('control/update') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -17,7 +17,8 @@
                 </div>
                 <div class="form-group">
                     <label for="description">{{ __('Description') }}</label>
-                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $festival->description }}" required>
+                    <textarea style="height: 9rem" id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required>{{$festival->description}}
+                    </textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

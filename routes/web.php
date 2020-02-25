@@ -10,14 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
 
-
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function() {
     Route::get('catalog','CatalogController@getIndex');
     Route::get('your_festivals', 'CatalogController@your_festivals');
     Route::post('catalog', 'CatalogController@postCatalog');
     Route::post('your_festivals', 'CatalogController@postYour_festivals');
-
+    Route::get('catalog/details/{id}', 'CatalogController@details');
 });
 
 Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function() {
@@ -29,8 +29,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function() {
     Route::post('control/update', 'CatalogController@postUpdate');
 });
 
-Route::get('/','HomeController@index')->name('home');
+Route::get('/','HomeController@index')->name('home')->middleware('verified');;
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');;
