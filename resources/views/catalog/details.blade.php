@@ -13,11 +13,18 @@
                         <hr>
                         <h3 class="text-title"> {{$festival->name}} </h3>
                         <p>{{$festival->description}}</p>
-                        <ul class="list-unstyled" style="color: black !important;">
-                            <li><i class="fa fa-users mr-2 text-title"></i>{{$festival->capacity}}</li>
-                            <li><i class="fa fa-calendar mr-2 text-title"></i>{{$festival->date}} </li>
-                            <li><i class="fa fa-ban mr-2 text-title"></i>{{$festival->allowedAge}}</li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled" style="color: black !important;">
+                                    <li><i class="fa fa-users mr-2 text-title"></i>{{$festival->capacity}}</li>
+                                    <li><i class="fa fa-calendar mr-2 text-title"></i>{{$festival->date}} </li>
+                                    <li><i class="fa fa-ban mr-2 text-title"></i>{{$festival->allowedAge}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 text-right mt-4">
+                                <a href="{{url('catalog')}}" class="btn btn-dark">Volver</a>
+                            </div>
+                        </div>
                         <hr>
                     </div>
                 </div>
