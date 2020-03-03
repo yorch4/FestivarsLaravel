@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group">
                     <label for="photo">{{ __('Photo') }}</label>
-                    <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ $festival->photo }}" required>
+                    <input id="photo" type="file" accept="image/*" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ $festival->photo }}" required>
                     @error('photo')
                     <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
