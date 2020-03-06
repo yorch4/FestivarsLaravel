@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/info','CatalogController@info')->name('info');
+
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function() {

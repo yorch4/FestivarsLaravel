@@ -15,6 +15,7 @@
                         <a class="ml-3" href="{{url('/control')}}">CONTROL</a>
                         @endif
                     @endif
+                <a class="ml-3" href="{{url('/info')}}">INFO</a>
             </li>
         </ul>
         <span class="navbar-text">

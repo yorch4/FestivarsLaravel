@@ -92,4 +92,8 @@ class CatalogController extends Controller {
         return view('catalog.details', array('festival' => $festival));
     }
 
+    public function info() {
+        return view('info');
+    }
+
 }
